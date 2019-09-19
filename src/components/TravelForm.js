@@ -11,7 +11,7 @@ const TravelForm = () => {
     }
     
     return (
-        <div>
+        <Form>
             <h1>Add Your Vacation Details</h1>
             <div className='forms'>
                 <label>
@@ -24,10 +24,12 @@ const TravelForm = () => {
                     <Field type='date' name='startRange' /> to <Field type='date' name='endRange'/>    
                 </label>
                 <h3>Activities</h3>
-                <Field type='table' name='activity'/>
+                <Field type='text' name='activity'/>
+                <h3>Notes</h3>
+                <Field type='text' name='notes'/>
             </div>
-            <button>Add Vacation</button>
-        </div>
+            <button type='submit'>Add Vacation</button>
+        </Form>
     )
 }
 
@@ -40,6 +42,7 @@ export default withFormik({
             startRange: values.startRange || '',
             endRange: values.endRange || '',
             activity: values.activity || '',
+            notes: values.notes || '',
         }
     }, 
     handleSubmit: (values)=>{

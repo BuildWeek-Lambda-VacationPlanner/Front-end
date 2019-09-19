@@ -11,8 +11,10 @@ const Home = () => {
       <h1>Vacation Planner</h1>
         <p>"When vacation planning sucks...."</p>
         <p>"Spend less time and effort to plan that vacation you've been dreaming about!"</p>
-        <button>Log In</button>
+        {/* TODO: Link on Login to vacation dashboard page */}
+        <button>Login</button>
         <br />
+        {/* TODO: Link on create user to NewUser page */}
         <a href='#'>Create User</a>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Sunset from '../Img/similar-color-scheme.jpg';
@@ -12,7 +12,8 @@ const Home = () => {
         <p>"When vacation planning sucks...."</p>
         <p>"Spend less time and effort to plan that vacation you've been dreaming about!"</p>
         <button>Log In</button>
-        <Link>Create User</Link>
+        <br />
+        <a href='#'>Create User</a>
     </div>
   );
 };

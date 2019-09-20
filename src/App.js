@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import NavBar from './components/HamBar/NavBar';
 import Home from './components/Home';
@@ -7,11 +8,24 @@ import Home from './components/Home';
 import './App.css';
 // import NewUser from './components/NewUser';
 
-function App() {
+function App(props) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const history = props.history;
+
+  useEffect(() => {
+    return props.history.listen(() => {
+      setIsMenuOpen(false);
+    });
+  });
+
   return (
     <div className="App">
       <div className='navbar-ham'>
-        <NavBar />
+        <NavBar 
+          isMenuOpen={isMenuOpen}
+          onToggleMenu={() => 
+            setIsMenuOpen(!isMenuOpen)}
+        />
       </div>
 
       <div className='home-section'>
@@ -24,4 +38,4 @@ function App() {
   );
 }
 
-export default App;
+export default withRouter(App);

@@ -1,13 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import { StyledBurger } from './Burger';
 
 const NavBar = () => {
   return(
     <div>
       <StyledBurger>
-        <div />
-        <div />
-        <div />
+        <div>
+          <button>Home Page</button>
+          <button>Vacations</button>
+          <button>Message</button>
+        </div>
       </StyledBurger>
     </div>
   );

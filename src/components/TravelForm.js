@@ -42,7 +42,7 @@ const TravelForm = ({status, touched, errors}) => {
                 </label>
                 <h3>Activities</h3>
                 <Field type='text' classname='form' name='activity'/><button>+</button>
-                <h3>Notes</h3>
+                <h3>Description</h3>
                 <Field type='text' classname='form' name='description'/>
             </div>
             <button classname='submit' type='submit'>Add Vacation</button>
@@ -82,7 +82,7 @@ export default withFormik({
     }),
     handleSubmit: (values, {setStatus})=>{
         console.log(values)
-        axios.post('https://reqres.in/api/vacations', values)
+        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
             .then((res)=>{
                 setStatus(res.data)
                 

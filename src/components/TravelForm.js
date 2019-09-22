@@ -17,6 +17,11 @@ const TravelForm = ({status}) => {
             setVacations([...vacations, status])
         }
     }, [status])
+    vacations.map(vacation=>(
+        <VacationCard 
+            data={vacation}
+        />
+    ))
     return (
         <>
         <Form>
@@ -45,11 +50,7 @@ const TravelForm = ({status}) => {
         <div>
             {vacations.map(vacation=>(
                 <VacationCard 
-                destination={vacation.destination} 
-                startRange={vacation.startRange}
-                endRange={vacation.endRange}
-                description={vacation.description}
-                cost={vacation.cost}
+                    data={vacation}
                 />
             ))}
         </div>

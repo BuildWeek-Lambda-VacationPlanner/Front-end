@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Route path='/dashboard' component={Dashboard}/>
       <Route path='/newtrip' component={TravelForm}/>
-      <Route path='/dashboard/card' component={vacationCard}/>
+      <Route path='/card' component={vacationCard}/>
     </div>
   );
 }

@@ -39,7 +39,7 @@ function App(props) {
       <Route path='/newuser/' render={() => <NewUser />} /> */}
       <Route path='/dashboard' component={Dashboard}/>
       <Route path='/newtrip' component={TravelForm}/>
-      <Route path='/dashboard/card' component={vacationCard}/>
+      <Route path='/card' component={vacationCard}/>
     </div>
   );
 }

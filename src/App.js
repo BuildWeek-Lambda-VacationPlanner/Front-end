@@ -8,6 +8,7 @@ import Home from './components/Home';
 import './App.css';
 // import NewUser from './components/NewUser';
 
+// TODO: HamNav working/functioning
 function App(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const history = props.history;

@@ -1,23 +1,24 @@
 import React from 'react';
+import { Form, Field } from 'formik';
 
-const NewUser = () => {
+const Register = () => {
   return(
     <div>
-      <form>
+      <Form>
         {/* TODO: add alert for both fields, validate user input */}
-        <input 
+        <Field 
           type='email' 
           name='email' 
           placeholder='example@blank.com' 
         />
-        <input 
+        <Field 
           type='password'
           name='password'
           placeholder='password'
         />
-      </form>
+      </Form>
     </div>
   );
 };
 
-export default NewUser;
+export default Register;

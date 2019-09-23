@@ -1,6 +1,7 @@
 import React from 'react'
 import '../travelForm.css'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const VacationCard = (props) => {
     console.log(props)
@@ -17,8 +18,8 @@ const VacationCard = (props) => {
     `
     const Card = styled.div`
         border: 2px solid black;
-        width: 70%;
-        margin-left: 12%;
+        width: 60%;
+        margin-left: 17%;
         margin-top: 4rem; 
         margin-bottom: 4rem;
         padding: 3%;
@@ -31,8 +32,8 @@ const VacationCard = (props) => {
             <InputLabel>Planned Activities: {props.activity}</InputLabel>
             <InputLabel>Approximate Cost: {props.cost}</InputLabel>
             <InputLabel>Description: {props.description}</InputLabel>
-            <InputLabel>Added Users: {props.users}</InputLabel>
-            <Edit>Edit Details</Edit>
+            <InputLabel>Comments: {props.comments}</InputLabel>
+            <Link to='/newTrip'><Edit>Edit Details</Edit></Link>
 
         </Card>
     )

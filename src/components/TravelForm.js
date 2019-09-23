@@ -32,26 +32,27 @@ const TravelForm = ({status, touched, errors}) => {
             <div className='forms'>
                 <label>
                     <span className='label'>Destination:  </span>
-                    <Field classname='form' type='text' name='destination'/>
+                    <Field className='form' type='text' name='destination'/>
                     <Button onClick={addDestination}>+</Button>
                     {touched.destination && errors.destination && <p className='error'>{errors.destination}</p>} 
                 </label><br/>
                 <label>
                     <span className='label'>Date Range:  </span>
-                    <Field classname='form' type='date' placeholder='Start Date' name='startRange' /> <span className='label'>to</span> <Field type='date' name='endRange'/>    
+                    <Field className='form' type='date' placeholder='Start Date' name='startRange' /> <span className='label'>to</span> <Field type='date' name='endRange'/>    
                     {touched.startRange && errors.startRange && <p className='error'>{errors.startRange}</p>}
                     {touched.endRange && errors.endRange && <p className='error'>{errors.endRange}</p>}
                 </label><br/>
                 <label>
                     <span className='label'>Anticipated Cost: </span>
-                    <Field classname='form' type='number' name='cost'/>
+                    <Field className='form' type='number' name='cost'/>
                 </label>
                 <h3>Activities</h3>
-                <Field type='text' classname='form' name='activity'/><Button>+</Button>
+                <Field type='text' className='form' name='activity'/><Button>+</Button>
                 <h3>Description</h3>
-                <Field type='text' classname='form' name='description'/>
+                <Field type='text' className='form' name='description'/>
+                {touched.description && errors.description && <p className='error'>{errors.description}</p>}
             </div>
-            <Button classname='submit' type='submit'>Add Vacation</Button>
+            <Button className='submit' type='submit'>Add Vacation</Button>
         </Form>
         <div>
             {vacations.map(vacation=>(
@@ -85,6 +86,7 @@ export default withFormik({
         destination: yup.string().required('✔️Destination Field Must Be Filled Out'),
         startRange: yup.string().required('✔️Start Field Must Be Filled Out'),
         endRange: yup.string().required('✔️End Field Must Be Filled Out'),
+        description: yup.string().required('✔️Description Must Be Filled Out')
     }),
     handleSubmit: (values, {setStatus})=>{
         console.log(values)

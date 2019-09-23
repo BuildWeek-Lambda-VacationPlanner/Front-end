@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {styled} from 'styled-components'
+import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
 import VacationCard from './vacationCard.js'
 import axios from 'axios'
@@ -9,11 +9,16 @@ import '../travelForm.css'
 const TravelForm = ({status, touched, errors}) => {
     const [vacations, setVacations] = useState([])
     const addDestination = () =>{
-
+    
     }
     const addActivity = () => {
 
     }
+    const Button = styled.button`
+        font-size: 1rem;
+        border-radius: .5rem;
+        font-family: 'Oswald', sans-serif;
+    `
     useEffect(()=>{
         if(status) {
             setVacations([...vacations, status])
@@ -27,7 +32,7 @@ const TravelForm = ({status, touched, errors}) => {
                 <label>
                     <span className='label'>Destination:  </span>
                     <Field classname='form' type='text' name='destination'/>
-                    <button onClick={addDestination}>+</button>
+                    <Button onClick={addDestination}>+</Button>
                     {touched.destination && errors.destination && <p className='error'>{errors.destination}</p>} 
                 </label><br/>
                 <label>
@@ -41,11 +46,11 @@ const TravelForm = ({status, touched, errors}) => {
                     <Field classname='form' type='number' name='cost'/>
                 </label>
                 <h3>Activities</h3>
-                <Field type='text' classname='form' name='activity'/><button>+</button>
+                <Field type='text' classname='form' name='activity'/><Button>+</Button>
                 <h3>Description</h3>
                 <Field type='text' classname='form' name='description'/>
             </div>
-            <button classname='submit' type='submit'>Add Vacation</button>
+            <Button classname='submit' type='submit'>Add Vacation</Button>
         </Form>
         <div>
             {vacations.map(vacation=>(

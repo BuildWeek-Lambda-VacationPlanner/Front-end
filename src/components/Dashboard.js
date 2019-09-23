@@ -1,31 +1,43 @@
 import React from 'react'
-import {styled} from 'styled-components'
+import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
 import {Link} from 'react-router-dom';
 
 const Dashboard = (props) => {
-    const displayCommentForm = () => {
-        const commentForm = <Field/>
-        return 
-    }
-
+    const DashboardContainer = styled.div`
+        width: 70%;
+        margin-left: 15%
+    `
+    const TopBox = styled.div`
+        border: 3px solid black;
+        width: 100%;
+    `
+    const CommentBox = styled.div`
+        border-bottom: 3px solid grey;
+        border-left: 3px solid grey;
+        border-right: 3px solid grey;
+        width: 100%;
+        border-radius: 5px;
+        padding-top: 1rem;
+        padding-bottom: .5rem;
+    `
     return (
-        <div>
-            <div>
-                {/* ON this ptag a click event will be used to open a full view of the vacation */}
-                <Link to={`/vacations/:id`}>Vacation to {props.vacation}, on {props.startRange} to {props.endRange}</Link>
-                <div>
-                    {/* this will be a bar accross where a like button, comment button with a click event that opens a form to comment and an add user component */}
-                    <button>Like button</button>
-                    <button onClick={displayCommentForm}>Comment button</button>
+        <Form>
+            <DashboardContainer>
+                <TopBox>
+                    <Link to={`/card/:id`}><h1 className=''>Vacation to {props.vacation}, on {props.startRange} til {props.endRange} </h1></Link>
                     <label>
-                        <span>Type User to Add Here</span>
-                        <Field type='text' name='addUser' placeHolder='Type User Here'/>  
+                        <span>Type User to Add Here:  </span>
+                        <Field type='text' name='addUser' placeHolder='Type User Here'/><button>Add</button>  
                     </label>
-                    
-                </div>
-            </div>
-        </div>
+                </TopBox>
+                <CommentBox>
+                    <Field type='text' name='comment' placeHolder='Type Comments Here'/> <button>Submit</button>
+                </CommentBox>
+                
+
+            </DashboardContainer>
+        </Form>
     )
 }
 

@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home';
 import Register from './components/Login/Register';
+// import Login from './components/Login/Login';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
       </div>
 
       <Route exact path='/' component={Home} />
+      {/* <Route path='/login' component={Login} /> */}
       <Route path='/register' component={Register} />
       <Route path='/dashboard' component={Dashboard}/>
       <Route path='/newtrip' component={TravelForm}/>

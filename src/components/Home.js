@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Login from './Login/Login';
@@ -17,8 +16,6 @@ const Home = () => {
         {/* TODO: Link on Login to vacation dashboard page */}
         <br />
         <Login />
-        {/* TODO: Link on create user to NewUser page */}
-        <Link>Create User</Link>
     </div>
   );
 };

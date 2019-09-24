@@ -1,14 +1,19 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return(
     <div className="navbar">
-      <button>Home Page</button>
-      <button>Vacations</button>
-      <button>Message</button>
+      <Link to='/'>
+        <button>Home</button>
+      </Link>
+      <Link to='/dashboard'>
+        <button>My Vacations</button>
+      </Link>
     </div>
   );
 };
 
 export default NavBar;
+
+

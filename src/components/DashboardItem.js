@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
-
 import {withFormik, Form, Field} from 'formik'
-import axios from 'axios'
 import {Link} from 'react-router-dom';
-import DashboardItem from './DashboardItem'
 
-const Dashboard = (props) => {
+function DashboardItem({destination, start_date, end_date, id}) {
     const DashboardContainer = styled.div`
         width: 70%;
         margin-left: 15%
@@ -38,35 +35,25 @@ const Dashboard = (props) => {
         font-family: 'Oswald', sans-serif;
         font-size: 1.1rem
     `
-    
+    console.log(destination)
     return (
-        <div>
-            <h1>Your Current Vacations 🏖️</h1>
-            {props.vacations.map(vacation => <DashboardItem destination={vacation.destination} id={vacation.id} start_date={vacation.start_date} end_date={vacation.end_date} /> )}        </div>
+        <DashboardContainer>
+            <TopBox>
+                <Link to={`/card/${id}`}><h1 className='destinationTitle'>Vacation to {destination}, on {start_date} til {end_date} </h1></Link>
 
-        
-        
+            </TopBox>
+            <CommentBox>
+                <Form>
+                    <label>
+                        <Span>Add User:  </Span>
+                        <Field type='text' name='addUser' placeHolder='Type User Here'/> <SubmitButton type='submit'>Add</SubmitButton>  
+                    </label>
+                    <Span>Add Comment:  </Span>
+                    <Field type='text' name='comment' placeHolder='Type Comments Here'/> <SubmitButton type='submit'>Submit</SubmitButton>
+                </Form>
+                </CommentBox>
+        </DashboardContainer>
     )
 }
 
-
-
-export default withFormik({
-    mapPropsToValues: (values) => {
-        return{
-            addUser: values.addUser || '',
-            comment: values.comment || '',
-        }
-    },
-    handleSubmit: (values, {setStatus})=> {
-        console.log(values)
-        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
-            .then((res)=>{
-                setStatus(res.data)
-                
-            })
-            .catch((err)=> {
-                console.log(err)
-            }) 
-    }
-})(Dashboard)
+export default DashboardItem

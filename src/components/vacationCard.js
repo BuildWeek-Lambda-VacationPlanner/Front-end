@@ -2,6 +2,7 @@ import React from 'react'
 import '../travelForm.css'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const VacationCard = (props) => {
     console.log(props)
@@ -24,6 +25,7 @@ const VacationCard = (props) => {
         margin-bottom: 4rem;
         padding: 3%;
     `
+
     return (
         <Card>
             <h1>Your Trip to {props.destination}</h1>

@@ -49,7 +49,7 @@ const TravelForm = ({status, touched, errors}) => {
                 <h3>Activities</h3>
                 <Field type='text' className='form' name='activity'/><Button>+</Button>
                 <h3>Description</h3>
-                <Field type='text' className='form' name='description'/>
+                <Field type='textarea' className='form' name='description'/>
                 {touched.description && errors.description && <p className='error'>{errors.description}</p>}
             </div>
             <Button className='submit' type='submit'>Add Vacation</Button>

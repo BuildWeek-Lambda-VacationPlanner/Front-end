@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
-
+import '../../App.css'
 function DashboardItem({destination, start_date, end_date, id}) {
     const DashboardContainer = styled.div`
         width: 70%;
@@ -22,6 +22,7 @@ function DashboardItem({destination, start_date, end_date, id}) {
         padding-top: 1rem;
         padding-bottom: .5rem;
         background-color: grey;
+        margin-bottom: 3rem;
     `
     const SubmitButton = styled.button`
         font-size: 1rem;

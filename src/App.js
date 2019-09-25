@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
-import Dashboard from './components/Dashboard.js'
+import Dashboard from './components/Dashboard/Dashboard.js'
 import TravelForm from './components/TravelForm'
 import VacationCard from './components/VacationCard'
 import { Route } from 'react-router-dom';
@@ -48,9 +48,9 @@ function App() {
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/dashboard' render={props => <Dashboard {...props} vacations={userVacations} />}/>
-      <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} edit={false}/>}/>
-      <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} edit={true}/>}/>
+      <Route path='/dashboard' render={props => <Dashboard {...props} userName={userName} vacations={userVacations} />}/>
+      <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
+      <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/card/:id' render={props => <VacationCard {...props} vacations={userVacations} />}/>
     </div>
   );

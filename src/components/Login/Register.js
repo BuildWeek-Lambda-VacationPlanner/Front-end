@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Field } from 'formik';
 
 const Register = () => {
+  const [newUser, setNewUser] = useState({
+    "username": '',
+    "password": ''
+  });
+
+  // TODO: Add API call and map to grab data and add new user
+
   return(
     <div>
       <Form>
         {/* TODO: add alert for both fields, validate user input */}
         <Field 
-          type='email' 
-          name='email' 
-          placeholder='example@blank.com' 
+          type='text' 
+          name='username' 
+          placeholder='Username'  
         />
         <Field 
           type='password'
@@ -17,6 +24,7 @@ const Register = () => {
           placeholder='password'
         />
       </Form>
+      <button>Submit</button> 
     </div>
   );
 };

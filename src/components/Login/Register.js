@@ -7,6 +7,8 @@ const Register = () => {
     "password": ''
   });
 
+  // TODO: Add API call and map to grab data and add new user
+
   return(
     <div>
       <Form>

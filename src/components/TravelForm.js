@@ -12,9 +12,9 @@ const TravelForm = ({status, touched, errors}) => {
     const addDestination = () =>{
     
     }
-    const addActivity = () => {
+    // const addActivity = () => {
 
-    }
+    // }
     const Button = styled.button`
         font-size: 1rem;
         border-radius: .5rem;

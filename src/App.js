@@ -23,10 +23,7 @@ function App() {
   //     setIsMenuOpen(false);
   //   });
   // });
-
   const [vacations, setVacations] = useState([])
-
-
   useEffect(()=>{
     axios.get(
       'https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : token }}

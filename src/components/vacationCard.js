@@ -1,23 +1,15 @@
 import React from 'react'
+import VacationCardItem from './VacationCardItem'
 
-
-const VacationCard = (props) => {
-    console.log(props)
+function VacationCard(props) {
+    const destination = props.match.params.id
+    
+    const selectedVacation = props.vacations.filter(vacation => destination === vacation.destination )
     return (
         <div>
-            <h1>Your Trip to {props.destination}</h1>
-            <p>Departure Date: {props.startRange}</p>
-            <p>Leaving Day: {props.endRange}</p>
-            <div>
-                {/* activities added go here */}
-            </div>
-            <p>Approximate Cost: {props.cost}</p>
-            <p>Description: {props.description}</p>
-            <button>Edit Details</button>
-
+            {selectedVacation.map(vacation => <VacationCardItem destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} comments={vacation.comments} key={vacation.destination} />)}
         </div>
     )
 }
-
 
 export default VacationCard

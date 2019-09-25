@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import Dashboard from './components/Dashboard.js'
 import TravelForm from './components/TravelForm'
-import vacationCard from './components/vacationCard'
+import VacationCard from './components/VacationCard'
 import { Route } from 'react-router-dom';
 import axios from 'axios'
 import NavBar from './components/NavBar/NavBar';
@@ -24,13 +24,19 @@ function App() {
 
   const [vacations, setVacations] = useState([])
 
+
   useEffect(()=>{
     axios.get(
-      'https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6ImphY29iIiwiaWF0IjoxNTY5MzQ4MjY0LCJleHAiOjE1NjkzNzcwNjR9.OvQIBjLk2XPqGPTDhXNL7dpNhULnrjwcR6YWvQNZt5c' }}
+      'https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : token }}
     ) .then(res=> {
       setVacations(res.data)
   })
   },[])
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6ImphY29iIiwiaWF0IjoxNTY5MzQ4MjY0LCJleHAiOjE1NjkzNzcwNjR9.OvQIBjLk2XPqGPTDhXNL7dpNhULnrjwcR6YWvQNZt5c'
+  // const token = localStorage.getItem('token')
+  const userName = "jane"
+  // const userName = localStorage.getItem('username')
+  const userVacations = vacations.filter(vacation => userName === vacation.username )
   return (
     <div className="App">
       <div className='header'>
@@ -40,14 +46,15 @@ function App() {
           //   setIsMenuOpen(!isMenuOpen)}
         />
       </div>
-
       <Route exact path='/' component={Home} />
       <Route path='/register' component={Register} />
-      <Route path='/dashboard' render={props => <Dashboard {...props} vacations={vacations} />}/>
-      <Route path='/newtrip' component={TravelForm}/>
-      <Route path='/card/:id' render={vacationCard}/>
+      <Route path='/dashboard' render={props => <Dashboard {...props} vacations={userVacations} />}/>
+      <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} edit={false}/>}/>
+      <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} edit={true}/>}/>
+      <Route path='/card/:id' render={props => <VacationCard {...props} vacations={userVacations} />}/>
     </div>
   );
 }
 
 export default withRouter(App);
+ 

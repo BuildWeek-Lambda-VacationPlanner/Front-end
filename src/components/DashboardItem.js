@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
 import {Link} from 'react-router-dom';
+import axios from 'axios'
 
 function DashboardItem({destination, start_date, end_date, id}) {
     const DashboardContainer = styled.div`
@@ -35,11 +36,10 @@ function DashboardItem({destination, start_date, end_date, id}) {
         font-family: 'Oswald', sans-serif;
         font-size: 1.1rem
     `
-    console.log(destination)
     return (
         <DashboardContainer>
             <TopBox>
-                <Link to={`/card/${id}`}><h1 className='destinationTitle'>Vacation to {destination}, on {start_date} til {end_date} </h1></Link>
+                <Link to={`/card/${destination}`}><h1 className='destinationTitle'>Vacation to {destination}, on {start_date} til {end_date} </h1></Link>
 
             </TopBox>
             <CommentBox>
@@ -56,4 +56,22 @@ function DashboardItem({destination, start_date, end_date, id}) {
     )
 }
 
-export default DashboardItem
+export default withFormik({
+    mapPropsToValues: (values) => {
+        return{
+            addUser: values.addUser || '',
+            comment: values.comment || '',
+        }
+    },
+    handleSubmit: (values, {setStatus})=> {
+        console.log(values)
+        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
+            .then((res)=>{
+                setStatus(res.data)
+                
+            })
+            .catch((err)=> {
+                console.log(err)
+            }) 
+    }
+})(DashboardItem)

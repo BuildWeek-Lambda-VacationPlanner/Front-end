@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const VacationCard = (props) => {
-    console.log(props)
+const VacationCard = ({vacations},{id}) => {
+    console.log(vacations[1])
     const InputLabel = styled.p`
         font-size: 1.2rem;
         font-family: 'Oswald', sans-serif;
@@ -25,16 +25,17 @@ const VacationCard = (props) => {
         margin-bottom: 4rem;
         padding: 3%;
     `
-
+    const destination = id
+    const selectedVacation = vacations && vacations.filter(vacation => destination === vacation.destination )
     return (
         <Card>
-            <h1>Your Trip to {props.destination}</h1>
-            <InputLabel>Departure Date: {props.startRange}</InputLabel>
-            <InputLabel>Leaving Day: {props.endRange}</InputLabel>
-            <InputLabel>Planned Activities: {props.activity}</InputLabel>
-            <InputLabel>Approximate Cost: {props.cost}</InputLabel>
-            <InputLabel>Description: {props.description}</InputLabel>
-            <InputLabel>Comments: {props.comments}</InputLabel>
+            <h1>Your Trip to {selectedVacation.destination}</h1>
+            <InputLabel>Departure Date: {selectedVacation.startRange}</InputLabel>
+            <InputLabel>Leaving Day: {selectedVacation.endRange}</InputLabel>
+            <InputLabel>Planned Activities: {selectedVacation.activity}</InputLabel>
+            <InputLabel>Approximate Cost: {selectedVacation.cost}</InputLabel>
+            <InputLabel>Description: {selectedVacation.description}</InputLabel>
+            <InputLabel>Comments: {selectedVacation.comments}</InputLabel>
             <Link to='/newTrip'><Edit>Edit Details</Edit></Link>
 
         </Card>

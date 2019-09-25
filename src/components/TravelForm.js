@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
-import VacationCard from './vacationCard.js'
+import VacationCard from './VacationCard.js'
 import axios from 'axios'
 import * as yup from 'yup';
 import '../travelForm.css'
@@ -38,9 +38,9 @@ const TravelForm = ({status, touched, errors}) => {
                 </label><br/>
                 <label>
                     <span className='label'>Date Range:  </span>
-                    <Field className='form' type='date' placeholder='Start Date' name='startRange' /> <span className='label'>to</span> <Field type='date' name='endRange'/>    
-                    {touched.startRange && errors.startRange && <p className='error'>{errors.startRange}</p>}
-                    {touched.endRange && errors.endRange && <p className='error'>{errors.endRange}</p>}
+                    <Field className='form' type='date' placeholder='Start Date' name='start_date' /> <span className='label'>to</span> <Field type='date' name='end_date'/>    
+                    {touched.start_date && errors.start_date && <p className='error'>{errors.start_date}</p>}
+                    {touched.end_date && errors.end_date && <p className='error'>{errors.end_date}</p>}
                 </label><br/>
                 <label>
                     <span className='label'>Anticipated Cost: </span>
@@ -58,8 +58,8 @@ const TravelForm = ({status, touched, errors}) => {
             {vacations.map(vacation=>(
                 <VacationCard 
                 destination={vacation.destination} 
-                startRange={vacation.startRange}
-                endRange={vacation.endRange}
+                start_date={vacation.start_date}
+                end_date={vacation.end_date}
                 description={vacation.description}
                 cost={vacation.cost}
                 />
@@ -75,8 +75,8 @@ export default withFormik({
     mapPropsToValues: (values) => {
         return{
             destination: values.destination || '',
-            startRange: values.startRange || '',
-            endRange: values.endRange || '',
+            start_date: values.start_date || '',
+            end_date: values.end_date || '',
             cost: values.cost || '',
             activity: values.activity || '',
             description: values.description || '',
@@ -84,13 +84,13 @@ export default withFormik({
     }, 
     validationSchema: yup.object().shape({
         destination: yup.string().required('✔️Destination Field Must Be Filled Out'),
-        startRange: yup.string().required('✔️Start Field Must Be Filled Out'),
-        endRange: yup.string().required('✔️End Field Must Be Filled Out'),
+        start_date: yup.string().required('✔️Start Field Must Be Filled Out'),
+        end_date: yup.string().required('✔️End Field Must Be Filled Out'),
         description: yup.string().required('✔️Description Must Be Filled Out')
     }),
     handleSubmit: (values, {setStatus})=>{
         console.log(values)
-        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
+        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6ImphY29iIiwiaWF0IjoxNTY5MzQ4MjY0LCJleHAiOjE1NjkzNzcwNjR9.OvQIBjLk2XPqGPTDhXNL7dpNhULnrjwcR6YWvQNZt5c' ,"user":"jacob", "id":7 }} , values)
             .then((res)=>{
                 setStatus(res.data)
                 

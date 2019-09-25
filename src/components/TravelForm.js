@@ -47,7 +47,7 @@ const TravelForm = ({status, touched, errors}) => {
                     <Field className='form' type='number' name='cost'/>
                 </label>
                 <h3>Activities</h3>
-                <Field type='text' className='form' name='activity'/><Button>+</Button>
+                <Field type='text' className='form' name='activities'/><Button>+</Button>
                 <h3>Description</h3>
                 <Field type='textarea' className='form' name='description'/>
                 {touched.description && errors.description && <p className='error'>{errors.description}</p>}
@@ -62,6 +62,7 @@ const TravelForm = ({status, touched, errors}) => {
                 end_date={vacation.end_date}
                 description={vacation.description}
                 cost={vacation.cost}
+                activities={vacation.activities}
                 />
             ))}
         </div>
@@ -79,8 +80,8 @@ export default withFormik({
             start_date: values.start_date || '',
             end_date: values.end_date || '',
             cost: values.cost || '',
-            activities: values.activity || '',
-            // description: values.description || '',
+            activities: values.activities || '',
+            description: values.description || '',
         }
     }, 
     validationSchema: yup.object().shape({

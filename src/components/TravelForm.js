@@ -20,7 +20,7 @@ const TravelForm = ({status, touched, errors}) => {
         border-radius: .5rem;
         font-family: 'Oswald', sans-serif;
     `
-    useEffect(()=>{
+    useEffect((vacations)=>{
         if(status) {
             setVacations([...vacations, status])
         }
@@ -28,7 +28,7 @@ const TravelForm = ({status, touched, errors}) => {
     return (
         <div className='container'>
         <Form>
-            <h1>Add Your Vacation Details 🔆</h1>
+            <h1>Add Your Vacation Details <span aria-label='sun' role='img'>🔆</span></h1>
             <div className='forms'>
                 <label>
                     <span className='label'>Destination:  </span>

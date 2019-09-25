@@ -17,7 +17,6 @@ import './App.css';
 function App() {
   // const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const history = props.history;
-
   // useEffect(() => {
   //   return props.history.listen(() => {
   //     setIsMenuOpen(false);
@@ -25,11 +24,13 @@ function App() {
   // });
   const [vacations, setVacations] = useState([])
   useEffect(()=>{
-    axios.get(
-      'https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : token }}
-    ) .then(res=> {
-      setVacations(res.data)
-  })
+    axios.get('https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : token }})
+      .then(res=> {
+        setVacations(res.data)
+      })
+      .catch(err=> {
+        console.log(err)
+      })
   },[])
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6ImphY29iIiwiaWF0IjoxNTY5MzQ4MjY0LCJleHAiOjE1NjkzNzcwNjR9.OvQIBjLk2XPqGPTDhXNL7dpNhULnrjwcR6YWvQNZt5c'
   // const token = localStorage.getItem('token')

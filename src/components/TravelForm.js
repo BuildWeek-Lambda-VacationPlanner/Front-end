@@ -75,11 +75,12 @@ export default withFormik({
     mapPropsToValues: (values) => {
         return{
             destination: values.destination || '',
+            user_id: 'jane',
             start_date: values.start_date || '',
             end_date: values.end_date || '',
             cost: values.cost || '',
-            activity: values.activity || '',
-            description: values.description || '',
+            activities: values.activity || '',
+            // description: values.description || '',
         }
     }, 
     validationSchema: yup.object().shape({
@@ -90,7 +91,7 @@ export default withFormik({
     }),
     handleSubmit: (values, {setStatus})=>{
         console.log(values)
-        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6ImphY29iIiwiaWF0IjoxNTY5MzQ4MjY0LCJleHAiOjE1NjkzNzcwNjR9.OvQIBjLk2XPqGPTDhXNL7dpNhULnrjwcR6YWvQNZt5c' ,"user":"jacob", "id":7 }} , values)
+        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
             .then((res)=>{
                 setStatus(res.data)
                 

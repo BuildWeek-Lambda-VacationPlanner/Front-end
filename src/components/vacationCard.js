@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const VacationCard = ({vacations},{id}) => {
-    console.log(vacations[1])
     const InputLabel = styled.p`
         font-size: 1.2rem;
         font-family: 'Oswald', sans-serif;
@@ -25,8 +24,10 @@ const VacationCard = ({vacations},{id}) => {
         margin-bottom: 4rem;
         padding: 3%;
     `
-    const destination = id
-    const selectedVacation = vacations && vacations.filter(vacation => destination === vacation.destination )
+    const destination = 'California'
+    
+    const selectedVacation =vacations.filter(vacation => destination === vacation.destination )
+    console.log(selectedVacation)
     return (
         <Card>
             <h1>Your Trip to {selectedVacation.destination}</h1>

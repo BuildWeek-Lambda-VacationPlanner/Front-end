@@ -20,7 +20,7 @@ const TravelForm = ({status, touched, errors}) => {
         border-radius: .5rem;
         font-family: 'Oswald', sans-serif;
     `
-    useEffect((vacations)=>{
+    useEffect(()=>{
         if(status) {
             setVacations([...vacations, status])
         }
@@ -54,18 +54,6 @@ const TravelForm = ({status, touched, errors}) => {
             </div>
             <Button className='submit' type='submit'>Add Vacation</Button>
         </Form>
-        <div>
-            {vacations.map(vacation=>(
-                <VacationCard 
-                destination={vacation.destination} 
-                start_date={vacation.start_date}
-                end_date={vacation.end_date}
-                description={vacation.description}
-                cost={vacation.cost}
-                activities={vacation.activities}
-                />
-            ))}
-        </div>
         </div>
     )
 }
@@ -76,10 +64,10 @@ export default withFormik({
     mapPropsToValues: (values) => {
         return{
             destination: values.destination || '',
-            user_id: 'jane',
+            user_id: 4,
             start_date: values.start_date || '',
             end_date: values.end_date || '',
-            cost: values.cost || '',
+            cost: values.cost ,
             activities: values.activities || '',
             description: values.description || '',
         }
@@ -94,7 +82,7 @@ export default withFormik({
         console.log(values)
         axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
             .then((res)=>{
-                setStatus(res.data)
+                console.log(res.data)
                 
             })
             .catch((err)=> {

@@ -20,6 +20,9 @@ const Login = (props) => {
       .then(reslog => {
         console.log("Login Response", reslog)
         setUsers(reslog.data.results)
+        localStorage.setItem('token', reslog.data.token)
+        localStorage.setItem('user', reslog.data.message)
+        localStorage.setItem('id', reslog.data.user_id)
         props.history.push('/dashboard/card')
       })
       .catch(errlog => {

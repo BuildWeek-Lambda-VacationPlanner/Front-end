@@ -35,6 +35,7 @@ function App() {
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo2LCJ1c2VybmFtZSI6ImphY29iIiwiaWF0IjoxNTY5MzQ4MjY0LCJleHAiOjE1NjkzNzcwNjR9.OvQIBjLk2XPqGPTDhXNL7dpNhULnrjwcR6YWvQNZt5c'
   // const token = localStorage.getItem('token')
   const userId = 3
+  const username = 'jane'
   // const userName = localStorage.getItem('username')
   const userVacations = vacations.filter(vacation => userId === vacation.user_id )
   console.log(userVacations)
@@ -47,10 +48,10 @@ function App() {
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/dashboard' render={props => <Dashboard {...props} userId={userId} vacations={userVacations} />}/>
+      <Route path='/dashboard' render={props => <Dashboard {...props} userId={userId} vacations={vacations} />}/>
       <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
-      <Route path='/card/:id' render={props => <VacationCard {...props} vacations={userVacations} />}/>
+      <Route path='/card/:id' render={props => <VacationCard {...props} vacations={vacations} />}/>
     </div>
   );
 }

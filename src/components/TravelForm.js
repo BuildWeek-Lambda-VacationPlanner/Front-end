@@ -2,7 +2,7 @@
 import React, {  useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
-import VacationCard from './VacationCard.js'
+// import VacationCard from './VacationCard.js'
 import axios from 'axios'
 import * as yup from 'yup';
 import '../travelForm.css'

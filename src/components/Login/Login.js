@@ -30,7 +30,6 @@ const Login = (props) => {
   const handleChanges = event => {
     setInputs({...inputs, [event.target.name]: event.target.value})
   }
-    // TODO: add map to grab data
 
   useEffect(() => {
     if (props.status) {
@@ -41,7 +40,7 @@ const Login = (props) => {
     axios
       .post('https://vacation-planner-bw.herokuapp.com/api/users/login')
       .then(reslog => {
-        console.log("Login Response", reslog)
+        // console.log("Login Response", reslog)
         setUsers(reslog.data.results)
       })
       .catch(errlog => {

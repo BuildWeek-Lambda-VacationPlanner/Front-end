@@ -11,7 +11,6 @@ const Home = () => {
       <StyledImg src={ Sunset } className="sunset" alt="sunset vacation" />
         <p>"When vacation planning sucks....</p>
         <p>Spend less time and effort planning that vacation you've been dreaming about!"</p>
-        {/* TODO: Link on Login to vacation dashboard page */}
         <br />
         <Login />
     </div>

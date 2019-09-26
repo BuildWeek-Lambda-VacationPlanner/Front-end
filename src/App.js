@@ -5,6 +5,7 @@ import TravelForm from './components/TravelForm'
 import VacationCard from './components/VacationCard'
 import { Route } from 'react-router-dom';
 import axios from 'axios'
+
 import NavBar from './components/NavBar/NavBar';
 import Header from './components/Header';
 import Login from './components/Login/Login';
@@ -13,15 +14,7 @@ import Register from './components/Login/Register';
 
 import './App.css';
 
-// TODO: HamNav working/functioning
 function App() {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const history = props.history;
-  // useEffect(() => {
-  //   return props.history.listen(() => {
-  //     setIsMenuOpen(false);
-  //   });
-  // });
   const [vacations, setVacations] = useState([])
   useEffect(()=>{
     axios.get('https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : token }})
@@ -38,6 +31,7 @@ function App() {
   // const userName = localStorage.getItem('username')
   const userVacations = vacations.filter(vacation => userId === vacation.user_id )
   console.log(userVacations)
+  
   return (
     <div className="App">
       <div>

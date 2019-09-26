@@ -7,9 +7,7 @@ import axios from 'axios'
 import * as yup from 'yup';
 import '../travelForm.css'
 
-const TravelForm = ({status, touched, errors}) => {
-    const [vacations, setVacations] = useState([])
-    const [id, setId] = useState([])
+const TravelForm = ({ touched, errors}) => {
     const addDestination = () =>{
     
     }
@@ -21,11 +19,6 @@ const TravelForm = ({status, touched, errors}) => {
         border-radius: .5rem;
         font-family: 'Oswald', sans-serif;
     `
-    useEffect(()=>{
-        if(status) {
-            setVacations([...vacations, status])
-        }
-    }, [status])
     return (
         <div className='container'>
         <Form>

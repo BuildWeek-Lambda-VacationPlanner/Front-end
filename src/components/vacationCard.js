@@ -7,7 +7,7 @@ function VacationCard(props) {
     const selectedVacation = props.vacations.filter(vacation => destination === vacation.destination )
     return (
         <div>
-            {selectedVacation.map(vacation => <VacationCardItem destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} comments={vacation.comments} key={vacation.destination} />)}
+            {selectedVacation.map(vacation => <VacationCardItem destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} messages={vacation.messages} key={vacation.destination} />)}
         </div>
     )
 }

@@ -32,7 +32,8 @@ function App(props) {
       .catch(err=> {
         console.log(err)
       })
-  },[])
+  },[vacations.id])
+  console.log(vacations)
   const token = localStorage.getItem('token')
 
   const userId = Number(localStorage.getItem('id'))
@@ -43,6 +44,7 @@ function App(props) {
   console.log(userName)
   const userVacations = vacations.filter(vacation => userId === vacation.user_id )
   console.log(userVacations)
+ 
   return (
     <div className="App">
       <div>

@@ -50,7 +50,7 @@ function DashboardItem({destination, start_date, end_date, id}) {
                         <Field type='text' name='addUser' placeHolder='Type User Here'/> <SubmitButton type='submit'>Add</SubmitButton>  
                     </label>
                     <Span>Add Comment:  </Span>
-                    <Field type='text' name='comment' placeHolder='Type Comments Here'/> <SubmitButton type='submit'>Submit</SubmitButton>
+                    <Field type='text' name='messages' placeHolder='Type Comments Here'/> <SubmitButton type='submit'>Submit</SubmitButton>
                 </Form>
                 </CommentBox>
         </DashboardContainer>
@@ -58,17 +58,18 @@ function DashboardItem({destination, start_date, end_date, id}) {
 }
 
 export default withFormik({
-    mapPropsToValues: (values) => {
+    mapPropsToValues: (values,id) => {
         return{
-            addUser: values.addUser || '',
-            comment: values.comment || '',
+            // addUser: values.addUser || '',
+            messages: values.messages || '',
+            user_id: 12
         }
     },
-    handleSubmit: (values, {setStatus})=> {
+    handleSubmit: (values)=> {
         console.log(values)
-        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
+        axios.post('https://vacation-planner-bw.herokuapp.com/api/users/messages', values)
             .then((res)=>{
-                setStatus(res.data)
+                console.log(res.data)
                 
             })
             .catch((err)=> {

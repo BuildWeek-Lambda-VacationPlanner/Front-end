@@ -2,13 +2,14 @@
 import React, {  useState, useEffect } from 'react'
 import styled from 'styled-components'
 import {withFormik, Form, Field} from 'formik'
-import VacationCard from './VacationCard.js'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup';
 import '../travelForm.css'
 
 const TravelForm = ({status, touched, errors}) => {
     const [vacations, setVacations] = useState([])
+    const [id, setId] = useState([])
     const addDestination = () =>{
     
     }
@@ -53,6 +54,7 @@ const TravelForm = ({status, touched, errors}) => {
                 {touched.description && errors.description && <p className='error'>{errors.description}</p>}
             </div>
             <Button className='submit' type='submit'>Add Vacation</Button>
+            <Link to='/dashboard'><Button>To Dashboard</Button></Link>
         </Form>
         </div>
     )
@@ -64,7 +66,7 @@ export default withFormik({
     mapPropsToValues: (values) => {
         return{
             destination: values.destination || '',
-            user_id: 4,
+            user_id: localStorage.getItem('id'),
             start_date: values.start_date || '',
             end_date: values.end_date || '',
             cost: values.cost ,

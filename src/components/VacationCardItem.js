@@ -3,7 +3,7 @@ import '../travelForm.css'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
-const VacationCardItem = ({destination, start_date, end_date, description, cost, activities, comments }) => {
+const VacationCardItem = ({destination, start_date, end_date, description, cost, activities, messages }) => {
     const InputLabel = styled.p`
         font-size: 1.2rem;
         font-family: 'Oswald', sans-serif;
@@ -32,7 +32,7 @@ const VacationCardItem = ({destination, start_date, end_date, description, cost,
             <InputLabel>Planned Activities: {activities}</InputLabel>
             <InputLabel>Approximate Cost: ${cost}</InputLabel>
             <InputLabel>Description: {description}</InputLabel>
-            <InputLabel>Comments: {comments}</InputLabel>
+            <InputLabel>Messages: {messages}</InputLabel>
             <Link to='/dashboard'><Return>Back to dashboard</Return></Link>
         </Card>
     )

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-
 import { withFormik, Form, Field } from 'formik';
+
+import styled from 'styled-components';
 
 const Login = (props) => {
   const [users, setUsers] = useState([]);
@@ -70,9 +71,9 @@ const Login = (props) => {
               onChange={handleChanges}
             />
           </Form>
-            <button onClick={handleSubmit}>Login</button>
+            <LoginBtn onClick={handleSubmit}>Login</LoginBtn>
           <Link to='/register'>
-            <button>Register</button>
+            <LoginBtn>Register</LoginBtn>
           </Link>
         </div>
     </section>
@@ -89,3 +90,11 @@ export default withFormik({
     }
   }
 })(loginWithRouter);
+
+const LoginBtn = styled.button`
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: .5rem;
+  background: #e77727;
+  color: whitesmoke;
+`;

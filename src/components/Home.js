@@ -20,6 +20,6 @@ const Home = () => {
 export default Home;
 
 const StyledImg = styled.img`
-  width: 40%;
-  height: 320px;
+  width: 90%;
+  height: 310px;
 `;

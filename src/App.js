@@ -34,21 +34,20 @@ function App(props) {
   console.log(userId)
 
   const welcome = localStorage.getItem('user')
-  const userName = welcome.slice(8, 100)
-  console.log(userName)
+  // const userName = welcome.slice(8, 100)
+  // console.log(userName)
   const userVacations = vacations.filter(vacation => userId === vacation.user_id )
   console.log(userVacations)
  
   return (
     <div className="App">
       <div>
-        <NavBar />
         <Header />
       </div>
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/dashboard' render={props => <Dashboard {...props} userName={userName} vacations={userVacations} />}/>
+      <Route path='/dashboard' render={props => <Dashboard {...props}  vacations={userVacations} />}/>
       <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/card/:id' render={props => <VacationCard {...props} vacations={vacations} />}/>

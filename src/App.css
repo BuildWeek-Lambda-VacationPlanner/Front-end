@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  background: transparent;
+  max-height: 780px;
+  width: 850px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 2px;
+  padding: 18px;
+  margin: 0 auto;
+  box-shadow: 0 3px 6px #443e3e, 0 3px 6px #443e3e;
 }
 
 .App-logo {

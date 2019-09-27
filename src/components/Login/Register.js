@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-
 import { withFormik, Form, Field } from 'formik';
 
+import styled from 'styled-components';
+
 const Register = (props) => {
-  const [newUsers, setNewUsers] = useState({
+  const [newUsers, setNewUsers] = useState([]);
+  const [newInputs, setNewInputs] = ({
     "username": '',
     "password": ''
   });
@@ -14,19 +16,19 @@ const Register = (props) => {
     event.preventDefault();
     console.log("Register", newUsers);
     axios
-      .post('https://vacation-planner-bw.herokuapp.com/api/users/register', newUsers)
-      .then(reslog => {
-        console.log("Register Response", reslog)
-        setNewUsers(reslog.data.results)
+      .post('https://vacation-planner-bw.herokuapp.com/api/users/register', newInputs)
+      .then(resreg => {
+        console.log("Register Response", resreg)
+        setNewUsers(resreg.data.results)
         props.history.push('/dashboard')
       })
-      .catch(errlog => {
-        console.log('Register Error', errlog)
+      .catch(errreg => {
+        console.log('Register Error', errreg)
       })
   };
 
   const handleChanges = event => {
-    setNewUsers({...newUsers, [event.target.name]: event.target.value})
+    setNewInputs({...newInputs, [event.target.name]: event.target.value})
   }
 
   useEffect(() => {
@@ -37,17 +39,17 @@ const Register = (props) => {
     console.log("Register Props", props);
     axios
       .post('https://vacation-planner-bw.herokuapp.com/api/users/register')
-      .then(reslog => {
+      .then(resreg => {
         // console.log("Register Response", reslog)
-        setNewUsers(reslog.data.results)
+        setNewUsers(resreg.data.results)
       })
-      .catch(errlog => {
-        console.log('Register Error', errlog)
+      .catch(errreg => {
+        console.log('Register Error', errreg)
       })
   }, [props.status]);
 
   return(
-    <section className="login">
+    <section className="register">
         <div>
         {/* TODO: add alert for both fields, validate user input */}
           <Form>
@@ -55,18 +57,18 @@ const Register = (props) => {
               type='text' 
               name='username'
               placeholder='Username'
-              value={newUsers.username}
+              value={newInputs.username}
               onChange={handleChanges}
             />
             <Field 
               type='password'
               name='password'
               placeholder='password'
-              value={newUsers.password}
+              value={newInputs.password}
               onChange={handleChanges}
             />
           </Form>
-            <button onClick={handleSubmit}>Submit</button>
+            <SubmitBtn onClick={handleSubmit}>Submit</SubmitBtn>
         </div>
     </section>
   );
@@ -82,3 +84,11 @@ export default withFormik({
     }
   }
 })(registerWithRouter);
+
+const SubmitBtn = styled.button`
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: .5rem;
+  background: #e77727;
+  color: whitesmoke;
+`;

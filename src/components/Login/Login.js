@@ -24,7 +24,7 @@ const Login = (props) => {
         localStorage.setItem('token', reslog.data.token)
         localStorage.setItem('user', reslog.data.message)
         localStorage.setItem('id', reslog.data.user_id)
-        props.history.push('/dashboard/card')
+        props.history.push('/dashboard')
       })
       .catch(errlog => {
         console.log('Login Error', errlog)
@@ -97,4 +97,5 @@ const LoginBtn = styled.button`
   border-radius: .5rem;
   background: #e77727;
   color: whitesmoke;
+  box-shadow: 0 3px 6px #f88a3b, 0 3px 6px #492642;
 `;

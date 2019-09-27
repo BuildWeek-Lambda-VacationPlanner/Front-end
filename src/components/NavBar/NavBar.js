@@ -25,7 +25,6 @@ const StyledButton = styled.button`
   border-radius: .5rem;
   background: #e77727;
   color: whitesmoke;
-  
 `;
 
 

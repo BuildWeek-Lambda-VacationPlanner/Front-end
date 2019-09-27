@@ -47,7 +47,7 @@ function App(props) {
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/dashboard' render={props => <Dashboard {...props}  vacations={userVacations} />}/>
+      <Route path='/dashboard' render={props => <Dashboard {...props}  userName={userName} vacations={userVacations} />}/>
       <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/card/:id' render={props => <VacationCard {...props} vacations={vacations} />}/>

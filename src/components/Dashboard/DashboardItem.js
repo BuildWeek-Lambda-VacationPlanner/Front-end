@@ -37,10 +37,11 @@ function DashboardItem({destination, start_date, end_date, id}) {
         font-family: 'Oswald', sans-serif;
         font-size: 1.1rem
     `
+
     return (
         <DashboardContainer>
             <TopBox>
-                <Link to={`/card/${destination}`}><h1 className='destinationTitle'>Vacation to {destination}, on {start_date} til {end_date} </h1></Link>
+                <Link to={`/card/${id}`}><h1 className='destinationTitle'>Vacation to {destination}, on {start_date} til {end_date} </h1></Link>
 
             </TopBox>
             <CommentBox>
@@ -50,7 +51,7 @@ function DashboardItem({destination, start_date, end_date, id}) {
                         <Field type='text' name='addUser' placeHolder='Type User Here'/> <SubmitButton type='submit'>Add</SubmitButton>  
                     </label>
                     <Span>Add Comment:  </Span>
-                    <Field type='text' name='messages' placeHolder='Type Comments Here'/> <SubmitButton type='submit'>Submit</SubmitButton>
+                    <Field type='text' name='comment' placeHolder='Type Comments Here'/> <SubmitButton type='submit'>Submit</SubmitButton>
                 </Form>
                 </CommentBox>
         </DashboardContainer>
@@ -58,16 +59,18 @@ function DashboardItem({destination, start_date, end_date, id}) {
 }
 
 export default withFormik({
-    mapPropsToValues: (values,id) => {
+    mapPropsToValues: (values, props) => {
+        console.log(values)
         return{
             // addUser: values.addUser || '',
-            messages: values.messages || '',
-            user_id: 12
+            comment : values.comment  || '',
+            vacations_id: values.id
         }
     },
-    handleSubmit: (values)=> {
+    handleSubmit: (values, vacationId)=> {
         console.log(values)
-        axios.post('https://vacation-planner-bw.herokuapp.com/api/users/messages', values)
+        console.log(vacationId.props.id)
+        axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations/comments', values, {vacation_id: vacationId.props.id})
             .then((res)=>{
                 console.log(res.data)
                 

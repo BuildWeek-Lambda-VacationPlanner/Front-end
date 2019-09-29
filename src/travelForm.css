@@ -38,3 +38,21 @@ a {
 Link {
     text-decoration: none;
 }
+
+.container {
+    width: 80%;
+    margin-left: 10%;
+    background-image: linear-gradient(blue, purple,indigo);
+}
+
+.form {
+    background-color: white;
+    border-radius:.5rem;
+    padding-left: .5rem;
+
+}
+
+input {
+    width: 11rem;
+    padding-left: 1rem;
+}

@@ -18,9 +18,7 @@ import './App.css';
 function App(props) {
 
   const [vacations, setVacations] = useState([])
-  const [comments, setComments] = useState([])
-  console.log(comments)
-  useEffect(()=>{
+  useEffect((token)=>{
     axios.get('https://vacation-planner-bw.herokuapp.com/api/vacations', {headers: {'Authorization' : token }})
       .then(res=> {
         setVacations(res.data)
@@ -38,7 +36,9 @@ function App(props) {
   console.log(userId)
 
   const welcome = localStorage.getItem('user')
-  // const userName = welcome.slice(8, 100)
+
+  const userName = welcome.slice(8, 100)
+
   // console.log(userName)
   const userVacations = vacations.filter(vacation => userId === vacation.user_id )
   console.log(userVacations)
@@ -54,7 +54,7 @@ function App(props) {
       <Route path='/dashboard' render={props => <Dashboard {...props}  userName={userName} vacations={userVacations} />}/>
       <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
-      <Route path='/card/:id' render={props => <VacationCard {...props} comments={comments} vacations={vacations} />}/>
+      <Route path='/card/:id' render={props => <VacationCard {...props}  vacations={vacations} />}/>
     </div>
   );
 }

@@ -12,39 +12,44 @@ const TravelForm = ({ touched, errors}) => {
         font-size: 1rem;
         border-radius: .5rem;
         font-family: 'Oswald', sans-serif;
+        background-color: #f5ab16;
+        height: 2rem;
+        margin: 1rem;
     `
-    const Header = styled.h1`
-        background-color: purple;
-    `
+
     return (
         <div className='container'>
-        <Form>
-            <Header>Add Your Vacation Details <span aria-label='sun' role='img'>🔆</span></Header>
-            <div className='forms'>
-                <label>
-                    <span className='label'>Destination:  </span>
-                    <Field className='form' type='text' name='destination'/>
-                    {touched.destination && errors.destination && <p className='error'>{errors.destination}</p>} 
-                </label><br/>
-                <label>
-                    <span className='label'>Date Range:  </span>
-                    <Field className='form' type='date' placeholder='Start Date' name='start_date' /> <span className='label'>to</span> <Field type='date' name='end_date'/>    
-                    {touched.start_date && errors.start_date && <p className='error'>{errors.start_date}</p>}
-                    {touched.end_date && errors.end_date && <p className='error'>{errors.end_date}</p>}
-                </label><br/>
-                <label>
-                    <span className='label'>Anticipated Cost: </span>
-                    <Field className='form' type='number' name='cost'/>
-                </label>
-                <h3>Activities</h3>
-                <Field type='text' className='form' name='activities'/>
-                <h3>Description</h3>
-                <Field type='textarea' className='form' name='description'/>
-                {touched.description && errors.description && <p className='error'>{errors.description}</p>}
-            </div>
-            <Button className='submit' type='submit'>Add Vacation</Button>
-            <Link to='/dashboard'><Button>To Dashboard</Button></Link>
-        </Form>
+        
+            <Form>
+                <div className='form'>
+                <h1>Add Your Vacation Details <span aria-label='sun' role='img'>🔆</span></h1>
+
+                    <label>
+                        <span className='label'>Destination:  </span>
+                        <Field className='form' type='text' name='destination'/>
+                        {touched.destination && errors.destination && <p className='error'>{errors.destination}</p>} 
+                    </label><br/>
+                    <label>
+                        <span className='label'>Date Range:  </span>
+                        <Field className='form' type='date' placeholder='Start Date' name='start_date' /> <span className='label'>to</span> <Field type='date' name='end_date'/>    
+                        {touched.start_date && errors.start_date && <p className='error'>{errors.start_date}</p>}
+                        {touched.end_date && errors.end_date && <p className='error'>{errors.end_date}</p>}
+                    </label><br/>
+                    <label>
+                        <span className='label'>Anticipated Cost: </span>
+                        <Field className='form' type='number' name='cost'/>
+                    </label>
+                    <h3>Activities</h3>
+                    <Field type='text' className='form' name='activities'/>
+                    <h3>Description</h3>
+                    <Field type='textarea' className='form' name='description'/>
+                    {touched.description && errors.description && <p className='error'>{errors.description}</p>}
+                <br></br>
+                <Button className='submit' type='submit'>Add Vacation</Button>
+                <Link to='/dashboard'><Button>To Dashboard</Button></Link>
+               </div> 
+            </Form>
+            
         </div>
     )
 }

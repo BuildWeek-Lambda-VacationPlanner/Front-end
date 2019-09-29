@@ -1,0 +1,11 @@
+.commentBox{
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    width: 100%;
+    border-radius: 5px;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+    background-color: grey;
+    margin-bottom: 3rem;
+}

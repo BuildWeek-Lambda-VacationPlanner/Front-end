@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import NavBar from '../NavBar/NavBar';
 
+
 const Dashboard = (props) => {   
     const Button = styled.button`
         background-color: orange;
@@ -12,6 +13,7 @@ const Dashboard = (props) => {
         color: white;
         border: 3px solid orange;
     `
+
     return (
         <div>
             <div>

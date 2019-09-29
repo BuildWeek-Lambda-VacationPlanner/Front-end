@@ -7,7 +7,7 @@ const VacationCardItem = ({destination, start_date, end_date, description, cost,
     const InputLabel = styled.p`
         font-size: 1.2rem;
         font-family: 'Oswald', sans-serif;
-        color: white;
+        color: black;
     `
     const Bold = styled.span`
         font-size: 1.3rem;
@@ -27,12 +27,12 @@ const VacationCardItem = ({destination, start_date, end_date, description, cost,
     `
     const Card = styled.div`
         border: 5px solid black;
-        width: 60%;
-        margin-left: 17%;
+        width: 40%;
+        margin-left: 27%;
         margin-top: 1rem; 
         margin-bottom: 1rem;
         padding: 3%;
-        background-color: #f5ab16;
+        background-color: white;
     `
     const CommentsHeader = styled.h1`
         width: 40%;
@@ -41,9 +41,13 @@ const VacationCardItem = ({destination, start_date, end_date, description, cost,
         color: white;
         font-family: 'Oswald', sans-serif;
     `
+    const Container = styled.div`
+        background-color: orange;
+    `
     console.log(comments)
     return (
         <>
+        <Container>
         <Card>
             <h1>Your Trip to <Destination>{destination}</Destination></h1>
             <InputLabel><Bold>Departure Date:</Bold> {start_date}</InputLabel>
@@ -53,6 +57,7 @@ const VacationCardItem = ({destination, start_date, end_date, description, cost,
             <InputLabel><Bold>Description:</Bold> {description}</InputLabel>
             <Link to='/dashboard'><Return>Back to dashboard</Return></Link>
         </Card>
+        </Container>
         <CommentsHeader>Your Comments</CommentsHeader>
         </>
     )

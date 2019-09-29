@@ -42,7 +42,7 @@ const TravelForm = ({ touched, errors}) => {
                     <h3>Activities</h3>
                     <Field type='text' className='form' name='activities'/>
                     <h3>Description</h3>
-                    <Field type='textarea' className='form' name='description'/>
+                    <Field component='textarea' className='form' name='description'/>
                     {touched.description && errors.description && <p className='error'>{errors.description}</p>}
                 <br></br>
                 <Button className='submit' type='submit'>Add Vacation</Button>
@@ -63,7 +63,7 @@ export default withFormik({
             user_id: localStorage.getItem('id'),
             start_date: values.start_date || '',
             end_date: values.end_date || '',
-            cost: values.cost ,
+            cost: values.cost || 0,
             activities: values.activities || '',
             description: values.description || '',
         }

@@ -8,7 +8,7 @@ function DashboardItem({destination, start_date, end_date, id}) {
     const TopBox = styled.div`
         border: 3px solid black;
         width: 100%;
-        background-color: orange;
+        background-color: #f5ab16ad;
     `
     const SubmitButton = styled.button`
         font-size: 1rem;

@@ -6,7 +6,6 @@ import VacationCard from './components/VacationCard'
 import { Route } from 'react-router-dom';
 import axios from 'axios'
 
-import NavBar from './components/NavBar/NavBar';
 import Header from './components/Header';
 import Login from './components/Login/Login';
 import Home from './components/Home';
@@ -14,8 +13,7 @@ import Register from './components/Login/Register';
 
 import './App.css';
 
-
-function App(props) {
+function App() {
 
   const [vacations, setVacations] = useState([])
   useEffect((token)=>{

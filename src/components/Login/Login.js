@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
@@ -15,7 +14,7 @@ const Login = (props) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log("Login", users);
+    // console.log("Login", users);
     axios
       .post('https://vacation-planner-bw.herokuapp.com/api/users/login', inputs)
       .then(reslog => {
@@ -31,6 +30,11 @@ const Login = (props) => {
       })
   };
 
+  const handleRegister = event => {
+    event.preventDefault();
+    props.history.push('/register')
+  }
+
   const handleChanges = event => {
     setInputs({...inputs, [event.target.name]: event.target.value})
   }
@@ -39,8 +43,8 @@ const Login = (props) => {
     if (props.status) {
       setUsers([...users, props.status])
     }
-
     console.log("Login Props", props);
+    
     axios
       .post('https://vacation-planner-bw.herokuapp.com/api/users/login')
       .then(reslog => {
@@ -72,9 +76,7 @@ const Login = (props) => {
             />
           </Form>
             <LoginBtn onClick={handleSubmit}>Login</LoginBtn>
-          <Link to='/register'>
-            <LoginBtn>Register</LoginBtn>
-          </Link>
+            <LoginBtn onClick={handleRegister}>Register</LoginBtn>
         </div>
     </section>
   );

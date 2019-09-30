@@ -4,19 +4,17 @@ import VacationCardItem from './VacationCardItem'
 import styled from 'styled-components'
 
 function VacationCard(props) {
-  const Header = styled.h1`
-    -webkit-text-stroke: 2px #4f2b37;
-    color: #c05221;
-  `
+
   const Comment = styled.p `
   font-family: 'Oswald', sans-serif;
   font size: 1.3rem;
   `
     const destination = props.match.params.id
-    const vacationId = destination
+    const vacationId = Number(destination)
     console.log(props)
     const [comments, setComments] = useState([])
     const token = localStorage.getItem('token')
+    console.log(token)
     useEffect((token)=>{
         axios.get('https://vacation-planner-bw.herokuapp.com/api/vacations/comments', {headers: {'Authorization' : token }})
           .then(res=> {
@@ -26,18 +24,18 @@ function VacationCard(props) {
             console.log(err)
           })
     },[])
-    
-    const selectedVacation = props.vacations.filter(vacation => destination == vacation.id )
+    console.log(vacationId)
+    const selectedVacation = props.vacations.filter(vacation => vacationId === vacation.id )
     console.log(selectedVacation)
-    const selectedComments = comments.filter(comment => vacationId == comment.vacations_id)
+    const selectedComments = comments.filter(comment => vacationId === comment.vacations_id)
     console.log(selectedComments)
     return (
         <div>
 
-            {selectedVacation.map(vacation => <VacationCardItem id={vacation.id} destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} key={vacation.destination}/>)}
+            {selectedVacation.map(vacation => <VacationCardItem key={vacation.id} id={vacation.id} destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} />)}
             {selectedComments.map(comment => 
             <div>
-                <Comment>{comment.comment}</Comment>
+                <Comment key={comment.id}>{comment.comment}</Comment>
             </div>)}
         </div>
     )

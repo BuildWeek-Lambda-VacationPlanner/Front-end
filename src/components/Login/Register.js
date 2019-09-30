@@ -1,71 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 
 import styled from 'styled-components';
 
-const Register = (props) => {
-  const [newUsers, setNewUsers] = useState([]);
-  const [newInputs, setNewInputs] = ({
-    "username": '',
-    "password": ''
+const Register = () => {
+  const [newUsers, setNewUsers] = useState({
+    username: null,
+    password: null,
+    token: null
   });
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log("Register", newUsers);
     axios
-      .post('https://vacation-planner-bw.herokuapp.com/api/users/register', newInputs)
+      .get('https://vacation-planner-bw.herokuapp.com/api/users/register',newUsers)
       .then(resreg => {
         console.log("Register Response", resreg)
-        setNewUsers(resreg.data.results)
-        props.history.push('/dashboard')
       })
       .catch(errreg => {
         console.log('Register Error', errreg)
       })
   };
 
-  const handleChanges = event => {
-    setNewInputs({...newInputs, [event.target.name]: event.target.value})
-  }
-
-  useEffect(() => {
-    if (props.status) {
-      setNewUsers([...newUsers, props.status])
-    }
-
-    console.log("Register Props", props);
-    axios
-      .post('https://vacation-planner-bw.herokuapp.com/api/users/register')
-      .then(resreg => {
-        // console.log("Register Response", reslog)
-        setNewUsers(resreg.data.results)
-      })
-      .catch(errreg => {
-        console.log('Register Error', errreg)
-      })
-  }, [props.status]);
-
   return(
     <section className="register">
         <div>
+          <p>Please add your username and password to register below!</p>
         {/* TODO: add alert for both fields, validate user input */}
           <Form>
             <Field 
               type='text' 
               name='username'
               placeholder='Username'
-              value={newInputs.username}
-              onChange={handleChanges}
+              // value={newInputs.username}
+              // onChange={handleChanges}
             />
             <Field 
               type='password'
               name='password'
               placeholder='password'
-              value={newInputs.password}
-              onChange={handleChanges}
+              // value={newInputs.password}
+              // onChange={handleChanges}
             />
           </Form>
             <SubmitBtn onClick={handleSubmit}>Submit</SubmitBtn>
@@ -74,16 +50,14 @@ const Register = (props) => {
   );
 };
 
-const registerWithRouter = withRouter(Register);
-
 export default withFormik({
-  mapPropsToValues: (info) => {
+  mapPropsToValues: (items) => {
     return {
-      username: info.username || '',
-      password: info.password || ''
+      username: items.username || '',
+      password: items.password || ''
     }
   }
-})(registerWithRouter);
+})(Register);
 
 const SubmitBtn = styled.button`
   text-decoration: none;

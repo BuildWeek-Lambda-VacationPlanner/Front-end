@@ -5,7 +5,6 @@ import TravelForm from './components/TravelForm'
 import VacationCard from './components/VacationCard'
 import { Route } from 'react-router-dom';
 import axios from 'axios'
-
 import NavBar from './components/NavBar/NavBar';
 import Header from './components/Header';
 import Login from './components/Login/Login';
@@ -53,7 +52,6 @@ function App(props) {
       <Route path='/register' component={Register} />
       <Route path='/dashboard' render={props => <Dashboard {...props}  userName={userName} vacations={userVacations} />}/>
       <Route path='/newtrip' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
-      <Route path='/edittrip/:id' render={props => <TravelForm {...props} setVacations={setVacations} vacations={vacations} />}/>
       <Route path='/card/:id' render={props => <VacationCard {...props}  vacations={vacations} />}/>
     </div>
   );

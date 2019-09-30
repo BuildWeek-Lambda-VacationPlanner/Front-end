@@ -14,7 +14,6 @@ function VacationCard(props) {
     console.log(props)
     const [comments, setComments] = useState([])
     const token = localStorage.getItem('token')
-    console.log(token)
     useEffect((token)=>{
         axios.get('https://vacation-planner-bw.herokuapp.com/api/vacations/comments', {headers: {'Authorization' : token }})
           .then(res=> {
@@ -24,7 +23,7 @@ function VacationCard(props) {
             console.log(err)
           })
     },[])
-    console.log(vacationId)
+    
     const selectedVacation = props.vacations.filter(vacation => vacationId === vacation.id )
     console.log(selectedVacation)
     const selectedComments = comments.filter(comment => vacationId === comment.vacations_id)
@@ -32,10 +31,10 @@ function VacationCard(props) {
     return (
         <div>
 
-            {selectedVacation.map(vacation => <VacationCardItem key={vacation.id} id={vacation.id} destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} />)}
+            {selectedVacation.map(vacation => <VacationCardItem id={vacation.id} destination={vacation.destination} start_date={vacation.start_date} end_date={vacation.end_date} description={vacation.description} cost={vacation.cost} activities={vacation.activities} key={vacation.destination}/>)}
             {selectedComments.map(comment => 
             <div>
-                <Comment key={comment.id}>{comment.comment}</Comment>
+                <Comment>{comment.comment}</Comment>
             </div>)}
         </div>
     )

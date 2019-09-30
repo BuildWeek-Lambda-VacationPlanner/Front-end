@@ -1,9 +1,9 @@
 [build]
-base = "Front-end/"
-publish = "Front-end/build/"
+base = "/"
+publish = "/build/"
 command = "yarn build"
 
 [[redirects]]
 from = "/*"
-to = "/"
+to = "/index.html"
 status = 200

@@ -20,7 +20,7 @@ const Dashboard = (props) => {
                 <NavBar />
             </div>
             <h1>{props.userName}'s Current Vacations <span role='img' aria-label='beach'>🏖️</span></h1>
-            {props.vacations.map(vacation => <DashboardItem key={vacation.destination} destination={vacation.destination} id={vacation.id} start_date={vacation.start_date} end_date={vacation.end_date} /> )}
+            {props.vacations.map(vacation => <DashboardItem key={vacation.id} destination={vacation.destination} id={vacation.id} start_date={vacation.start_date} end_date={vacation.end_date} /> )}
             <Link to='/newtrip'><Button>Add Trip</Button></Link>
         </div>
     )

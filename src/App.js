@@ -26,11 +26,11 @@ function App(props) {
       .catch(err=> {
         console.log(err)
       })
-  },[vacations.id])
+  },[vacations.length])
 
 
   console.log(vacations)
-  const token = localStorage.getItem('token')
+
 
   const userId = Number(localStorage.getItem('id'))
   console.log(userId)

@@ -39,7 +39,7 @@ function App() {
   console.log(userVacations)
  
   return (
-    <div className="App">
+    <div className="app">
       <div>
         <Header />
       </div>

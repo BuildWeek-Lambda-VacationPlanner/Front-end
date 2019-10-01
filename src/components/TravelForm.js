@@ -74,7 +74,7 @@ export default withFormik({
         end_date: yup.string().required('✔️End Field Must Be Filled Out'),
         description: yup.string().required('✔️Description Must Be Filled Out')
     }),
-    handleSubmit: (values, {setStatus})=>{
+    handleSubmit: (values)=>{
         console.log(values)
         axios.post('https://vacation-planner-bw.herokuapp.com/api/vacations', values)
             .then((res)=>{
@@ -83,6 +83,6 @@ export default withFormik({
             })
             .catch((err)=> {
                 console.log(err)
-            }) 
-    }
+            })
+    },
 })(TravelForm)

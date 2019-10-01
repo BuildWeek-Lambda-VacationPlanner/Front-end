@@ -28,7 +28,7 @@ function App() {
 
 
   console.log(vacations.length)
-
+  const userName = 'null'
 
   const userId = Number(localStorage.getItem('id'))
   console.log(userId)

@@ -33,9 +33,6 @@ function App() {
   const userId = Number(localStorage.getItem('id'))
   console.log(userId)
 
-  const welcome = localStorage.getItem('user')
-
-  const userName = welcome.slice(8, 100)
 
   // console.log(userName)
   const userVacations = vacations.filter(vacation => userId === vacation.user_id )

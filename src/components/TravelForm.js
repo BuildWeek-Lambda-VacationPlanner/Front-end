@@ -45,7 +45,7 @@ const TravelForm = ({ touched, errors}) => {
                     <Field component='textarea' className='form' name='description'/>
                     {touched.description && errors.description && <p className='error'>{errors.description}</p>}
                 <br></br>
-                <Button className='submit' type='submit'>Add Vacation</Button>
+                <Button type='submit'>Add Vacation</Button>
                 <Link to='/dashboard'><Button>To Dashboard</Button></Link>
                </div> 
             </Form>

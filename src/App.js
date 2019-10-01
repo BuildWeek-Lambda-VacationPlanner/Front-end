@@ -24,10 +24,10 @@ function App() {
       .catch(err=> {
         console.log(err)
       })
-  },[vacations.length])
+  },[vacations.index])
 
 
-  console.log(vacations)
+  console.log(vacations.length)
 
 
   const userId = Number(localStorage.getItem('id'))

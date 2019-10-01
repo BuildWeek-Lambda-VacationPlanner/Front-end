@@ -4,7 +4,7 @@ import {withFormik, Form, Field} from 'formik'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 import './dashboard.css'
-import { format } from 'util';
+
 function DashboardItem({destination, start_date, end_date, id}) {
     const TopBox = styled.div`
         border: 3px solid black;
